@@ -27,10 +27,12 @@ from reasyn.chem.mol import Molecule
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('file')
-    file = parser.parse_args().file
+    parser.add_argument('--total', type=int, default=1000)
+    args = parser.parse_args()
+    file = args.file
 
     df = pd.read_csv(file)
-    total = 1000
+    total = args.total
 
     # canonicalize
     df['target'] = df['target'].apply(lambda s: Molecule(s).csmiles)
