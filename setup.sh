@@ -42,4 +42,11 @@ hf_hub_download(repo_id='nvidia/NV-ReaSyn-EB-174M-v2', filename='nv-reasyn-eb-17
 
 pip install setuptools==67.8.0
 
+# Phase 6: Test sets
+echo "=== Downloading test sets ==="
+wget -q -O data/enamine_smiles_1k.txt \
+  https://raw.githubusercontent.com/wenhao-gao/synformer/main/data/enamine_smiles_1k.txt
+wget -q -O data/chembl_filtered_1k.txt \
+  https://raw.githubusercontent.com/wenhao-gao/synformer/main/data/chembl_filtered_1k.txt
+
 echo "=== Setup complete. Run infer.sh to start inference. ==="
