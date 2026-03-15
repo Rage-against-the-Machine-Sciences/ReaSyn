@@ -264,9 +264,13 @@ def run_parallel_sampling(
     df_all: list[pd.DataFrame] = []
     with open(output, "w") as f:
         for _ in tqdm(range(total)):
-            _, df = pool.fetch()
+            mol, df = pool.fetch()
             if df is None or len(df) == 0:
+                print(f"[{mol.csmiles}] no results")
                 continue
+            best = df.iloc[0]
+            reconstructed = best['score'] == 1.0
+            print(f"[{mol.csmiles}] best_sim={best['score']:.3f} n_analogs={len(df)} {'[RECONSTRUCTED]' if reconstructed else ''}")
             df.to_csv(f, float_format="%.3f", index=False, header=f.tell() == 0)
             df_all.append(df)
 
