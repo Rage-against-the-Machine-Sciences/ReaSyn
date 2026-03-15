@@ -40,4 +40,6 @@ hf_hub_download(repo_id='nvidia/NV-ReaSyn-AR-166M-v2', filename='nv-reasyn-ar-16
 hf_hub_download(repo_id='nvidia/NV-ReaSyn-EB-174M-v2', filename='nv-reasyn-eb-174m-v2.ckpt', local_dir='data/trained_model')
 "
 
+pip install setuptools==67.8.0
+
 echo "=== Setup complete. Run infer.sh to start inference. ==="
